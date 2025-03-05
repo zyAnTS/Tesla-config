@@ -2,6 +2,8 @@ import { useState } from "react";
 import logo from "./assets/logotesla.png";
 import "./App.css";
 import Selector from "./components/Selector";
+import SelectorAdd from "./components/SelectorAdd";
+import SelectorSub from "./components/SelectorSub";
 import Price from "./components/Price";
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
                 cost={90700}
                 setSelec={true}
                 funcSelec={setSelecMotor}
+                setPrice={setPrice}
                 classActive={"config-selec"}
                 classDefault={"config"}
               />
@@ -35,6 +38,7 @@ function App() {
                 cost={106700}
                 setSelec={false}
                 funcSelec={setSelecMotor}
+                setPrice={setPrice}
                 classActive={"config"}
                 classDefault={"config-selec"}
               />
@@ -43,26 +47,28 @@ function App() {
           <section>
             <h2>Couleur</h2>
             <article>
-              <div
-                className={selecColor ? "config-selec" : "config"}
-                onClick={() => {
-                  setPrice(price - 1000);
-                  setSelecColor(true);
-                }}
-              >
-                <span>Blanc Nacré Multicouches</span>
-                <p>0 €</p>
-              </div>
-              <div
-                className={selecColor ? "config" : "config-selec"}
-                onClick={() => {
-                  setPrice(price + 1000);
-                  setSelecColor(false);
-                }}
-              >
-                <span>Noir uni</span>
-                <p>1 000 €</p>
-              </div>
+              <SelectorSub
+                selec={selecColor}
+                text={"Blanc Nacré Multicouches"}
+                cost={0}
+                setSelec={true}
+                funcSelec={setSelecColor}
+                setPrice={setPrice}
+                price={price}
+                classActive={"config-selec"}
+                classDefault={"config"}
+              />
+              <SelectorAdd
+                selec={selecColor}
+                text={"Noir uni"}
+                cost={1000}
+                setSelec={false}
+                funcSelec={setSelecColor}
+                setPrice={setPrice}
+                price={price}
+                classActive={"config"}
+                classDefault={"config-selec"}
+              />
             </article>
           </section>
         </div>

@@ -1,4 +1,4 @@
-const Selector = ({
+const SelectorSub = ({
   selec,
   setSelec,
   funcSelec,
@@ -7,13 +7,18 @@ const Selector = ({
   classActive,
   classDefault,
   setPrice,
+  price,
 }) => {
   return (
     <div
       className={selec ? classActive : classDefault}
       onClick={() => {
-        setPrice(cost);
-        funcSelec(setSelec);
+        if (selec) {
+          console.log("Bloqué");
+        } else {
+          setPrice(price - 1000);
+          funcSelec(setSelec);
+        }
       }}
     >
       <span>{text}</span>
@@ -22,4 +27,4 @@ const Selector = ({
   );
 };
 
-export default Selector;
+export default SelectorSub;
